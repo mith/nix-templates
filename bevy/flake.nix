@@ -25,7 +25,7 @@
       system: let
         pkgs = nixpkgs.legacyPackages."${system}";
         rust = fenix.packages.${system}.stable;
-        crane-lib = crane.lib."${system}".overrideToolchain rust.toolchain;
+        craneLib = crane.lib."${system}".overrideToolchain rust.toolchain;
         buildInputs = with pkgs; [
           libxkbcommon
           alsaLib
@@ -42,9 +42,9 @@
           pkg-config
         ];
       in {
-        packages.bevy-game-bin = crane-lib.buildPackage {
+        packages.bevy-game-bin = craneLib.buildPackage {
           name = "bevy-game-bin";
-          src = crane-lib.cleanCargoSource ./.;
+          src = craneLib.cleanCargoSource ./.;
           inherit buildInputs;
           inherit nativeBuildInputs;
         };
