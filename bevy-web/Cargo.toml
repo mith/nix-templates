@@ -1,0 +1,8 @@
+[package]
+name = "bevy-game"
+version = "0.1.0"
+authors = ["Simon Voordouw <simonvoordouw@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+bevy = { version="0.9", features=["wayland"] }
