@@ -105,7 +105,7 @@
           '';
         };
 
-        packages.bevy-game-web-server = pkgs.writeShellScriptBin "run-pong-server" ''
+        packages.bevy-game-web-server = pkgs.writeShellScriptBin "bevy-game-web-server" ''
           ${pkgs.simple-http-server}/bin/simple-http-server -i -c=html,wasm,ttf,js -- ${self.packages.${system}.bevy-game-web}/
         '';
 
@@ -116,9 +116,9 @@
           exePath = "/bevy-game";
         };
 
-        apps.bevy-game-server = flake-utils.lib.mkApp {
+        apps.bevy-game-web-server = flake-utils.lib.mkApp {
           drv = self.packages.${system}.bevy-game-web-server;
-          exePath = "/bin/run-pong-server";
+          exePath = "/bin/bevy-game-web-server";
         };
 
         defaultApp = self.apps.${system}.bevy-game;
