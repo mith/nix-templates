@@ -27,7 +27,6 @@
         rust = fenix.packages.${system}.stable;
         craneLib = crane.lib."${system}".overrideToolchain rust.toolchain;
         buildInputs = with pkgs; [
-          libxkbcommon
           alsaLib
           udev
           xorg.libXcursor
